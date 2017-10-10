@@ -33,14 +33,130 @@ class FifaCreateMatchController extends ModuleController{
 
 		$this->init();
 
-		$this->build_view();
+		$form = $this->build_form();
+
+		$this->view->put('form', $form->display());
 
 		return $this->generate_response();
 	}
 
-	private function build_view(){
+	private function build_form(){
 
+		$form = new HTMLForm('PartnersForm');
+
+		// FIELDSET
+		$fieldset = new FormFieldsetHTML('fieldset', 'Joueur 1');
+		$form->add_fieldset($fieldset);
+
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('player1', $this->lang['create.playername'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('playerclub1', $this->lang['create.playerclub'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('playergoals1', $this->lang['create.nb_goals'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+
+		// Player 2
+		$fieldset = new FormFieldsetHTML('fieldset', 'Joueur 2');
+		$form->add_fieldset($fieldset);
 		
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('player2', $this->lang['create.playername'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('playerclub2', $this->lang['create.playerclub'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+		$fieldset->add_field(new FormFieldSimpleSelectChoice('playergoals2', $this->lang['create.nb_goals'], '',
+			array(
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1'),
+				new FormFieldSelectChoiceOption('1', '1')
+				)),
+			array('required' => true)
+		);
+
+		// BUTTONS
+		$buttons_fieldset = new FormFieldsetSubmit('buttons');
+		$this->submit_button = new FormButtonDefaultSubmit();
+		$buttons_fieldset->add_element($this->submit_button);
+		$form->add_fieldset($buttons_fieldset);
+		
+		return $form;
 	}
 
 	private function init(){

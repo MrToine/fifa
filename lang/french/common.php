@@ -48,6 +48,7 @@ $lang = array(
 'th.points' => "Pts",
 
 // Page création match
+'create.title_page' => 'Créer un match',
 'fifa.create_match' => "Inscrire un match",
 'create.playername' => "Joueur : ",
 'create.playerclub' => "Club : ",
